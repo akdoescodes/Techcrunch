@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalContent = document.getElementById("modal-content");
     const eventsContainer = document.getElementById("events-container") || document.getElementById("eventsList");
 
-    if (!eventsContainer) return;
+    if (!eventsContainer || !modal || !modalContent) return;
 
     // ✅ Fetch events from JSON file instead of local storage
     fetch("events.json")
@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
             events.forEach((event, index) => {
                 const eventCard = document.createElement("div");
                 eventCard.classList.add("event-card");
-
                 eventCard.innerHTML = `
                     <div class="event-details">
                         <span class="event-emoji">${getCategoryEmoji(event.category)}</span>
@@ -38,19 +37,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 `;
 
                 eventsContainer.appendChild(eventCard);
-
-                // ✅ Open modal on clicking the arrow button
-                const readMoreButton = eventCard.querySelector(".read-more-circle");
-                readMoreButton.addEventListener("click", function () {
-                    console.log("Opening Modal for:", event.name);
-                    openModal(event);
-                });
             });
         })
         .catch(error => {
             console.error("Error fetching events:", error);
             eventsContainer.innerHTML = "<p>Failed to load events.</p>";
         });
+
+    // ✅ Event delegation for better performance
+    eventsContainer.addEventListener("click", function (e) {
+        const readMoreButton = e.target.closest(".read-more-circle");
+        if (readMoreButton) {
+            const index = readMoreButton.getAttribute("data-index");
+            fetch("events.json")
+                .then(response => response.json())
+                .then(events => openModal(events[index]));
+        }
+    });
 
     // ✅ Open Modal Function
     function openModal(event) {
@@ -77,42 +80,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
         modal.classList.add("show");
         modal.style.display = "block";
+        document.body.style.overflow = "hidden"; // ✅ Prevent scrolling on iOS
 
-        // ✅ Close modal when clicking close button
-        document.getElementById("close-modal").addEventListener("click", function () {
-            modal.classList.remove("show");
-            modal.style.display = "none";
-        });
+        // ✅ Add event listener to close modal
+        document.getElementById("close-modal").addEventListener("click", closeModal);
     }
 
     // ✅ Close Modal when clicking outside content
     modal.addEventListener("click", function (e) {
         if (e.target === modal) {
-            modal.classList.remove("show");
-            modal.style.display = "none";
+            closeModal();
         }
     });
+
+    // ✅ Close Modal Function
+    function closeModal() {
+        modal.classList.remove("show");
+        modal.style.display = "none";
+        document.body.style.overflow = ""; // ✅ Restore scrolling
+    }
 
     // Ensure modal is hidden initially
     window.addEventListener("load", function () {
         modal.style.display = "none";
     });
+
+    // ✅ Function to return category emoji
+    function getCategoryEmoji(category) {
+        const categoryEmojis = {
+            "Art": "🎨", "Theatre": "🎭", "Poetry": "🎤", "Movie": "🎬",
+            "Photography": "📸", "Music": "🎵", "Band": "🎸", "Dance": "💃",
+            "DJ": "🎧", "Classical": "🎻", "Debate": "📖", "Quiz": "🏅",
+            "Hackathon": "💻", "Gaming": "🎮", "Speech": "🗣", "Football": "⚽",
+            "Basketball": "🏀", "Gym": "🏋️", "Marathon": "🏃", "Badminton": "🏸",
+            "Workshop": "🛠", "Seminar": "📚", "Science": "🧪", "Research": "🔬",
+            "BookClub": "📖", "Food": "🍔", "Camp": "🏕", "Networking": "🤝",
+            "Charity": "🎗", "Environment": "🌱"
+        };
+        return categoryEmojis[category] || "🎟";
+    }
 });
 
-// ✅ Function to return category emoji
-function getCategoryEmoji(category) {
-    const categoryEmojis = {
-        "Art": "🎨", "Theatre": "🎭", "Poetry": "🎤", "Movie": "🎬",
-        "Photography": "📸", "Music": "🎵", "Band": "🎸", "Dance": "💃",
-        "DJ": "🎧", "Classical": "🎻", "Debate": "📖", "Quiz": "🏅",
-        "Hackathon": "💻", "Gaming": "🎮", "Speech": "🗣", "Football": "⚽",
-        "Basketball": "🏀", "Gym": "🏋️", "Marathon": "🏃", "Badminton": "🏸",
-        "Workshop": "🛠", "Seminar": "📚", "Science": "🧪", "Research": "🔬",
-        "BookClub": "📖", "Food": "🍔", "Camp": "🏕", "Networking": "🤝",
-        "Charity": "🎗", "Environment": "🌱"
-    };
-    return categoryEmojis[category] || "🎟";
-}
 
 // Function to update modal position based on scroll
 function updateModalPosition() {

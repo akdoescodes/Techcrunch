@@ -1,28 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
     const eventsContainer = document.getElementById("events-container");
-    const events = JSON.parse(localStorage.getItem("events")) || [];
+    if (!eventsContainer) return; // ✅ Prevents errors if container is missing
+
+    const storedEvents = localStorage.getItem("events");
+    let events = [];
+
+    try {
+        events = storedEvents ? JSON.parse(storedEvents) : []; // ✅ Prevents JSON parsing errors
+    } catch (error) {
+        console.error("Error parsing events from localStorage:", error);
+        events = []; // ✅ Fallback to empty array
+    }
 
     eventsContainer.innerHTML = ""; // Clear previous events
 
-    // Create a wrapper to maintain row layout
+    if (events.length === 0) {
+        eventsContainer.innerHTML = "<p>No events available.</p>"; // ✅ Handle empty events gracefully
+        return;
+    }
+
+    // ✅ Create a wrapper for layout
     const eventGrid = document.createElement("div");
     eventGrid.classList.add("event-grid");
+
+    const emojiMap = {
+        "hackathon": "💻",
+        "sports": "⚽",
+        "music": "🎶",
+        "dance": "💃",
+        "gaming": "🎮",
+        "other": "🔹"
+    };
 
     events.forEach(event => {
         const eventCard = document.createElement("div");
         eventCard.classList.add("event-card");
 
-        // Get emoji based on category
-        const emojiMap = {
-            "hackathon": "💻",
-            "sports": "⚽",
-            "music": "🎶",
-            "dance": "💃",
-            "gaming": "🎮",
-            "other": "🔹"
-        };
-
-        const categoryEmoji = emojiMap[event.category] || "🔹";
+        const category = (event.category || "other").toLowerCase(); // ✅ Ensures lowercase lookup
+        const categoryEmoji = emojiMap[category] || "🔹"; // ✅ Default emoji
 
         eventCard.innerHTML = `
             <h3>${categoryEmoji} ${event.name}</h3>
@@ -33,5 +48,5 @@ document.addEventListener("DOMContentLoaded", () => {
         eventGrid.appendChild(eventCard);
     });
 
-    eventsContainer.appendChild(eventGrid); // Append the grid to the container
+    eventsContainer.appendChild(eventGrid); // ✅ Append grid only if events exist
 });
