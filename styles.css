@@ -4,6 +4,121 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+}
+
+/* Prevent automatic text resize on orientation change */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Full-Screen Background */
+body {
+    opacity: 0;
+    transform: translateY(20px); /* Slight slide up effect */
+    animation: fadeInUp 1s ease-out forwards;
+    background-color: #000;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Ensure every page uses full viewport width & height */
+html, body {
+    width: 100%;
+    min-height: 100vh;  
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overscroll-behavior-y: none; /* Prevent pull-to-refresh */
+}
+
+/* Input and Interactive Elements Compatibility */
+input, select, textarea, button {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    font-size: 16px; /* Prevent zoom on input focus */
+    touch-action: manipulation;
+    min-height: 44px; /* Accessibility touch target size */
+}
+
+/* Prevent automatic zoom on input focus */
+input:focus, select:focus, textarea:focus {
+    font-size: 16px;
+}
+
+/* Improved touch targets */
+a, button, .read-more-circle, .register-btn, .nav-links a, #apply-filters {
+    touch-action: manipulation;
+    cursor: pointer;
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Rest of the previous CSS remains the same, just add these modifications */
+
+/* Additional iOS/Android Compatibility Fixes */
+.event-card, .read-more-circle, .register-btn, .nav-links a {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Dropdown and Select Styling for Cross-Platform */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px auto;
+    padding-right: 30px;
+}
+
+/* Scrolling and Modal Improvements */
+.events-container, #modal-content {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+}
+
+/* Remove default focus outline */
+*:focus {
+    outline: none;
+}
+
+/* Existing media queries and other styles remain unchanged */
+@media (max-width: 768px) {
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+/* Rest of the original CSS remains exactly the same */
+/* version backed up new 1 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Full-Screen Background */
