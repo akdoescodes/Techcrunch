@@ -45,7 +45,7 @@ header {
     background: #00000000; /* Simple Dark Card */
     padding: 25px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Subtle glow effect */
     text-align: center;
     margin: 0 auto 30px;
 }
@@ -99,9 +99,9 @@ h2 {
     border-color: rgba(255, 165, 0, 0.5);
 }
 
-.team-member:nth-child(3n + 4):hover {
-    box-shadow: 0 5px 20px rgba(255, 0, 0, 0.6);
-    border-color: rgba(255, 0, 0, 0.5);
+/* Hover Effect: Slight Scale */
+.team-member:hover {
+    transform: scale(1.05);
 }
 
 /* Contact List */
@@ -130,14 +130,21 @@ h2 {
 .divider {
     width: 50%;
     height: 1px;
-    background: #333;
+    background: linear-gradient(to right, transparent, #666, transparent); /* Improved gradient */
     margin: 25px auto;
 }
 
 /* External Spacing */
 .external-space {
-    margin-top: 300px; /* Space above the element */
-    margin-bottom: 100px; /* Space below the element */
+    margin-top: 200px; /* Adjusted spacing */
+    margin-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+    .external-space {
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
 }
 
 /* Responsive Design */
@@ -164,6 +171,6 @@ h2 {
 /* Fix Safari flexbox bug */
 @supports (-webkit-touch-callout: none) {
     .team-grid {
-        display: -webkit-flex;
+        display: flex;
     }
 }
