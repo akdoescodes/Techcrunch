@@ -9,7 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    function toggleMenu() {
+    function toggleMenu(event) {
+        event.preventDefault(); // ✅ Prevent unwanted swipe behaviors
+        event.stopPropagation(); // ✅ Stop event from bubbling
+
         const isActive = menuToggle.classList.toggle('active');
         navLinks.classList.toggle('active', isActive);
         menuOverlay.classList.toggle('active', isActive);
@@ -19,7 +22,17 @@ document.addEventListener('DOMContentLoaded', function () {
     menuToggle.addEventListener('click', toggleMenu);
     menuOverlay.addEventListener('click', toggleMenu);
 
-    // ✅ Support touch events for iOS Safari
-    menuToggle.addEventListener('touchstart', toggleMenu);
-    menuOverlay.addEventListener('touchstart', toggleMenu);
+    // ✅ Touch event fixes
+    menuToggle.addEventListener('touchstart', (e) => {
+        e.preventDefault(); // Prevent accidental gestures
+        toggleMenu(e);
+    }, { passive: false });
+
+    menuOverlay.addEventListener('touchstart', (e) => {
+        e.preventDefault(); // Prevent touch scrolling from closing menu
+        toggleMenu(e);
+    }, { passive: false });
+
+    // ✅ Prevent swipe gestures from interfering
+    navLinks.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
 });
