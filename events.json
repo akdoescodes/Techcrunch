@@ -10,7 +10,7 @@
         "type": "Team",
         "price": "₹50",
         "teamSize": "2 Members",
-        "link": null
+        "link": "https://forms.gle/8Hg1vT7cJGbzm9FP9"
     },
     {
         "name": "Emoji Enigma",
@@ -23,7 +23,7 @@
         "type": "Team",
         "price": "₹40",
         "teamSize": "2 Members",
-        "link": null
+        "link": "https://forms.gle/U3RCUSc6ayPX94yTA"
     },
     {
         "name": "Balloon Bash",
@@ -36,7 +36,7 @@
         "type": "Solo",
         "price": "₹30",
         "teamSize": "Single Member",
-        "link": null
+        "link": "https://forms.gle/mnbSUQcojsn72U4x6"
     },
     {
         "name": "XtreamFit",
@@ -49,6 +49,32 @@
         "type": "Solo",
         "price": "₹50",
         "teamSize": "Single Member",
-        "link": null
+        "link": "https://forms.gle/pQSr8RmxZD6252qc9"
+    },
+    {
+        "name": "Code Quest Challenge",
+        "desc": "Code Quest Challenge is an exciting coding competition designed to test participants' problem-solving, debugging, and programming skills through multiple rounds. Teams must demonstrate their coding expertise, logical thinking, and ability to work under pressure.",
+        "date": "2025-04-16",
+        "time": "11:00 AM",
+        "contact": "Nayan Dadulkar ~ 9309532899, Janvi Nanotkar ~ 8605614353",
+        "category": "Algorithmic Coding & Problem Solving",
+        "location": "Lab A-114, Block-A, GHRCEM, Nagpur",
+        "type": "Solo",
+        "price": "₹30",
+        "teamSize": "Single Member",
+        "link": "https://forms.gle/6XgYcnxvfS9LDX9D9"
+    },
+    {
+        "name": "Code Relay",
+        "desc": "Code Relay is a fast-paced coding challenge where teamwork, problem-solving, and debugging skills are put to the test. Teams of two must collaborate and switch roles to solve a series of interconnected coding challenges across multiple PCs.",
+        "date": "2025-04-16",
+        "time": "11:00 AM",
+        "contact": "Vatsal Rungta ~ 7507441034, Hitesh Rinayat ~ 8698107876, Prajwal Maidpawar ~ 9834042813",
+        "category": "Coding & Debugging Challenge",
+        "location": "GF-021, Near Basketball Ground, GHRCEM, Nagpur",
+        "type": "Team",
+        "price": "₹50 per team",
+        "teamSize": "2 Members",
+        "link": "https://forms.gle/CQtBfztumwsuDZYz7"
     }
 ]
