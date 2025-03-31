@@ -8,7 +8,7 @@
         "category": "Tech Based Scavenger Hunt",
         "location": "GF-021, Near Basketball Ground, GHRCEM, Nagpur",
         "type": "Team",
-        "price": "₹50",
+        "price": "50",
         "teamSize": "2 Members",
         "link": "https://forms.gle/8Hg1vT7cJGbzm9FP9"
     },
@@ -21,7 +21,7 @@
         "category": "Emoji-Based Puzzle Challenge",
         "location": "Lab A-114, Block-A, GHRCEM, Nagpur",
         "type": "Team",
-        "price": "₹40",
+        "price": "40",
         "teamSize": "2 Members",
         "link": "https://forms.gle/U3RCUSc6ayPX94yTA"
     },
@@ -34,7 +34,7 @@
         "category": "Fun Physical Challenge",
         "location": "Block-C Atrium, GHRCEM, Nagpur",
         "type": "Solo",
-        "price": "₹30",
+        "price": "30",
         "teamSize": "Single Member",
         "link": "https://forms.gle/mnbSUQcojsn72U4x6"
     },
@@ -47,7 +47,7 @@
         "category": "Fitness & Endurance Challenge",
         "location": "Green Gym, Near Block-C, GHRCEM, Nagpur",
         "type": "Solo",
-        "price": "₹50",
+        "price": "50",
         "teamSize": "Single Member",
         "link": "https://forms.gle/pQSr8RmxZD6252qc9"
     },
@@ -60,7 +60,7 @@
         "category": "Algorithmic Coding & Problem Solving",
         "location": "Lab A-114, Block-A, GHRCEM, Nagpur",
         "type": "Solo",
-        "price": "₹30",
+        "price": "30",
         "teamSize": "Single Member",
         "link": "https://forms.gle/6XgYcnxvfS9LDX9D9"
     },
@@ -73,7 +73,7 @@
         "category": "Coding & Debugging Challenge",
         "location": "GF-021, Near Basketball Ground, GHRCEM, Nagpur",
         "type": "Team",
-        "price": "₹50 per team",
+        "price": "50 per team",
         "teamSize": "2 Members",
         "link": "https://forms.gle/CQtBfztumwsuDZYz7"
     }
